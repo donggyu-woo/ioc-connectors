@@ -1,0 +1,33 @@
+metadata:
+  org: orgA
+  vendor: aws
+  product: guardduty
+
+feed:
+  url: https://raw.githubusercontent.com/donggyu-woo/ioc-connectors/refs/heads/main/feeds/ip-addr.txt
+
+managedAccount:
+  id: "111122223333"
+  region: ap-northeast-2
+
+  bucketName: soc-threatintel
+  bucketPrefix: orgA/aws/guardduty/deny.txt
+
+  lambdaName: soc-threatintel-aws-apne2-guardduty
+
+  schedulerName: soc-threatintel-aws-apne2-guardduty
+  schedulerRate: 5  # minutes
+  schedulerRoleName: socThreatIntelSchedulerRole
+
+targetAccount:
+  id: "444455556666"
+  region: ap-northeast-2
+
+  roleName: socThreatIntelRole
+
+  gdDetector: 12abc34d567e8fa901bc2d34e56789f0
+  gdMaxIocs: 50000
+  gdThreatIntelSet: soc-threatIntel
+
+#webhookUrl:
+#siemEndpointUrl:
